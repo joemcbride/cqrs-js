@@ -207,13 +207,6 @@ membersJoined(cmd) {
   agg.membersJoined(cmd.day, cmd.location, cmd.members)
   documents.save(agg)
 }
-// event sourcing
-membersJoined(cmd) {
-  documents.appendEvents(
-    cmd.entityId,
-    membersJoinedEvent(cmd.day, cmd.location, cmd.members)
-  )
-}
 ```
 
 ---
@@ -224,9 +217,20 @@ class Documents {
   save(aggregate) {
     documents.appendEvents(
       aggregate.id,
-      aggregate.uncommitedChanges()
+      aggregate.uncommitedChanges() // list of events
     )
   }
+}
+```
+
+---
+# Event Sourcing
+```javascript
+membersJoined(cmd) {
+  documents.appendEvents(
+    cmd.entityId,
+    membersJoinedEvent(cmd.day, cmd.location, cmd.members)
+  )
 }
 ```
 ---
@@ -361,6 +365,7 @@ CAP Theorem - Consistency, Availability, Partition Tolerance - choose two
 
 # Resources
 * Exploring CQRS and Event Sourcing - free book by Microsoft Patterns & Practices
+  * https://msdn.microsoft.com/en-us/library/jj554200.aspx
   * Most images are taken from this book
 * Greg Young
   * http://github.com/gregoryyoung/m-r
