@@ -12,7 +12,7 @@ build-lists: true
 # CQRS
 * Command Query Responsibility Segregation
 * A pattern for separating read and write operations
-* Separation of concerns is the key motivation
+* Key motivation is separation of concerns
 
 ---
 
@@ -23,7 +23,7 @@ build-lists: true
 ---
 
 ```csharp
-// LocationService
+// LocationService - typical CRUD
 void MarkLocationPreferred(LocationId)
 Location GetLocation(LocationId)
 
@@ -39,23 +39,26 @@ Location GetLocation(LocationId)
 
 ![inline](http://i.imgur.com/1IQ5Gzf.png)
 
-^ Put like this it isn't terribly interesting, though it allows some powerful options
+^ Put like this it isn't terribly interesting, though it allows some powerful options which we'll talk about
 
 ---
 
-# Where do you do CQRS?
-
+# Where do you put CQRS?
+* Greg Young says ...
 * CQRS is not a top-level architecture
 * Top-level will look more like SOA and EDA [service-oriented or event-driven (messaging) architecture]
-* - Greg Young
 
 ---
 
-Tasked Based UI
-
+# Enables Task Based UI
 * Different than CRUD
-* CQRS is not required
 * Domain Driven Design requires tasks
+* CQRS is not required
+
+^ * Enables task centered UI actions
+ - submit application, reserve seats, join quest
+* Tasks are more user centered
+* CRUD tends to shape the solution vs. focus on business need
 
 ---
 
@@ -74,8 +77,7 @@ Tasked Based UI
 
 ---
 
-Ubiquitous Language
-
+# Ubiquitous Language
 * Defined when talking with domain experts
 * Identify nouns / verbs when talking about the business process
 * "Quest" is a noun
@@ -180,7 +182,7 @@ name field updated with the value Quinn
 
 ---
 
-![inline](http://i.imgur.com/0RgK3JC.png)
+![inline](http://i.imgur.com/2KukK7v.png)
 
 ^ Example: a bank balance
 
@@ -361,8 +363,8 @@ CAP Theorem - Consistency, Availability, Partition Tolerance - choose two
 * Exploring CQRS and Event Sourcing - free book by Microsoft Patterns & Practices
   * Most images are taken from this book
 * Greg Young
-  * https://github.com/gregoryyoung/m-r
-  * https://www.youtube.com/watch?v=8JKjvY4etTY
+  * http://github.com/gregoryyoung/m-r
+  * http://www.youtube.com/watch?v=8JKjvY4etTY
 
 ---
 
@@ -370,3 +372,8 @@ CAP Theorem - Consistency, Availability, Partition Tolerance - choose two
 * Jonathan Oliver - Sagas
   * http://blog.jonathanoliver.com/cqrs-sagas-with-event-sourcing-part-i-of-ii/
 * Marten - http://jasperfx.github.io/marten
+
+
+---
+
+# http://github.com/joemcbride/cqrs-js
